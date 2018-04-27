@@ -1,5 +1,5 @@
-#ifndef VK_FUNCTION_POINTER_HEADER
-#define VK_FUNCTION_POINTER_HEADER
+#ifndef VK_FUNCTION_POINTER_H
+#define VK_FUNCTION_POINTER_H
 
 #include <stdexcept>
 
@@ -22,7 +22,7 @@ public:
 	VkInstanceFunctionPointer(VkInstance instance, const char* name) {
 		func = (Function)vkGetInstanceProcAddr(instance, name);
 		if (func == nullptr) {
-			throw std::runtime_error("");
+			throw std::runtime_error(std::string("Could not find procedure address for ") + name);
 		}
 	}
 
